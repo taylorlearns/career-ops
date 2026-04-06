@@ -52,27 +52,25 @@ git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
 npx playwright install chromium   # Required for PDF generation
 
-# 2. Configure
+# 2. Onboarding files
 cp config/profile.example.yml config/profile.yml  # Edit with your details
 cp templates/portals.example.yml portals.yml       # Customize companies
-
-# 3. Add your CV
 # Create cv.md in the project root with your CV in markdown
-
-# 4. Personalize with Claude
-claude   # Open Claude Code in this directory
-
-# Then ask Claude to adapt the system to you:
-# "Change the archetypes to backend engineering roles"
-# "Translate the modes to English"
-# "Add these 5 companies to portals.yml"
-# "Update my profile with this CV I'm pasting"
-
-# 5. Start using
-# Paste a job URL or run /career-ops
 ```
 
-> **The system is designed to be customized by Claude itself.** Modes, archetypes, scoring weights, negotiation scripts -- just ask Claude to change them. It reads the same files it uses, so it knows exactly what to edit.
+Open the repo in Codex and start with `AGENTS.md` for the Codex-first instructions.
+
+```bash
+# Main Codex entry points (wrappers around scripts/codex/*.mjs)
+npm run codex:evaluate -- --job <url-or-file>
+npm run codex:scan
+npm run codex:pdf -- <args>
+npm run codex:tracker -- verify
+```
+
+These commands are entry points that wrap the existing helper scripts. They do not auto-submit applications.
+
+> **Codex is the primary customization surface.** It can update modes, archetypes, and configs by editing the same files it uses. Claude Code remains available as a secondary reference.
 
 See [docs/SETUP.md](docs/SETUP.md) for the full setup guide.
 
@@ -231,27 +229,26 @@ Construido por alguien que lo uso para evaluar 740+ ofertas, generar 100+ CVs pe
 git clone https://github.com/santifer/career-ops.git
 cd career-ops && npm install
 
-# 2. Configurar
-cp config/profile.example.yml config/profile.yml  # Editar con tus datos
-cp templates/portals.example.yml portals.yml       # Personalizar empresas
+# 2. Archivos de onboarding
+cp config/profile.example.yml config/profile.yml  # Edita con tus datos
+cp templates/portals.example.yml portals.yml       # Personaliza empresas
 
-# 3. Añadir tu CV
 # Crear cv.md en la raiz del proyecto con tu CV en markdown
-
-# 4. Personalizar con Claude
-claude   # Abrir Claude Code en este directorio
-
-# Pidele a Claude que adapte el sistema a ti:
-# "Cambia los arquetipos a roles de backend"
-# "Traduce los modes a ingles"
-# "Añade estas empresas a portals.yml"
-# "Actualiza mi perfil con este CV que te pego"
-
-# 5. Usar
-# Pega una URL de oferta o ejecuta /career-ops
 ```
 
-> **El sistema esta diseñado para que Claude lo personalice.** Modes, arquetipos, scoring, scripts de negociacion -- solo pidelo. Claude lee los mismos archivos que usa, asi que sabe exactamente que editar.
+Abre el repo en Codex y empieza con `AGENTS.md` para las instrucciones Codex-first.
+
+```bash
+# Entry points principales de Codex (wrappers de scripts/codex/*.mjs)
+npm run codex:evaluate -- --job <url-or-file>
+npm run codex:scan
+npm run codex:pdf -- <args>
+npm run codex:tracker -- verify
+```
+
+Estos comandos son entry points que envuelven los scripts existentes. No automatizan envios.
+
+> **Codex es la superficie principal de personalizacion.** Puede actualizar modes, arquetipos, y configs editando los mismos archivos que usa. Claude Code sigue disponible como referencia secundaria.
 
 Guia completa en [docs/SETUP.md](docs/SETUP.md).
 

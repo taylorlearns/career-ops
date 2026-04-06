@@ -8,7 +8,12 @@
     "dedup": "node dedup-tracker.mjs",
     "merge": "node merge-tracker.mjs",
     "pdf": "node generate-pdf.mjs",
-    "sync-check": "node cv-sync-check.mjs"
+    "sync-check": "node cv-sync-check.mjs",
+    "codex:evaluate": "node scripts/codex/evaluate.mjs",
+    "codex:scan": "node scripts/codex/scan.mjs",
+    "codex:pdf": "node scripts/codex/pdf.mjs",
+    "codex:tracker": "node scripts/codex/tracker.mjs",
+    "test:codex": "node --test tests/codex-entrypoints.test.mjs tests/codex-docs.test.mjs"
   },
   "keywords": ["ai", "job-search", "claude-code", "career", "automation"],
   "author": "Santiago Fernández de Valderrama <hi@santifer.io> (https://santifer.io)",
