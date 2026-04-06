@@ -33,8 +33,8 @@ export function getSetupStatus() {
     },
     {
       label: "Modes docs",
-      ready: fileExists("modes/_shared.md") && fileExists("modes/oferta.md"),
-      detail: "Ensure `modes/_shared.md` and `modes/oferta.md` are present.",
+      ready: fileExists("modes"),
+      detail: "Review the `modes` docs for workflow guidance.",
     },
     {
       label: "Lockfile",
@@ -52,7 +52,7 @@ export function printSetupChecklist() {
   console.log("Setup checklist:");
   for (const { label, ready, detail } of statuses) {
     const marker = ready ? "x" : " ";
-    console.log(`  [${marker}] ${label}${detail ? ` — ${detail}` : ""}`);
+    console.log(`  [${marker}] ${label}${detail ? ` - ${detail}` : ""}`);
   }
   console.log("");
 }
@@ -71,7 +71,8 @@ export function printWorkflowHeader(title, details = []) {
 export function runNodeScript(scriptRelativePath, extraArgs = []) {
   const scriptPath = repoPath(scriptRelativePath);
   const argv = [scriptPath, ...extraArgs];
-  const result = spawnSync("node", argv, {
+  const nodePath = process.execPath;
+  const result = spawnSync(nodePath, argv, {
     stdio: "inherit",
     cwd: repoRoot,
   });
