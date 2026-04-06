@@ -47,9 +47,10 @@ test('docs/codex-workflows.md maps /career-ops to codex:evaluate and codex:scan'
   );
   ['codex:evaluate', 'codex:scan'].forEach((plan) => {
     assert(
-    content.includes(plan),
-    `codex-workflows.md should describe ${plan} as a replacement flow.`
-  );
+      content.includes(plan),
+      `codex-workflows.md should describe ${plan} as a replacement flow.`
+    );
+  });
 });
 
 test('docs/codex-workflows.md calls out entry-point behavior and the shared modes', () => {
@@ -82,5 +83,4 @@ test('docs/CODEX.md accurately reflects the helper relationship', () => {
     !content.includes('loads the same context'),
     'docs/CODEX.md should not claim scripts/codex/shared.mjs loads the modes context.'
   );
-});
 });

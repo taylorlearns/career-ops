@@ -6,8 +6,8 @@ This document clarifies how the old `/career-ops` commands translate into the ne
 
 | `/career-ops` command | Codex command | What it now does |
 |----------------------|---------------|------------------|
-| `/career-ops {paste a JD or URL}` | `codex:evaluate` | Entry point that validates onboarding, highlights the `modes/_shared.md`/`modes/oferta.md` guidance, and wraps `scripts/codex/evaluate.mjs` so the agent can follow the planned evaluation workflow when you request it. |
-| `/career-ops scan` | `codex:scan` | Entry point that ensures `portals.yml` is ready, repeats the manual scanning steps, and invokes `scripts/codex/scan.mjs` when you explicitly authorize a scan. |
+| `/career-ops {paste a JD or URL}` | `codex:evaluate` | Entry point that surfaces the onboarding reminders, references the `modes/_shared.md`/`modes/oferta.md` guidance, and wraps `scripts/codex/evaluate.mjs` so the agent can follow the planned evaluation workflow when you request it. |
+| `/career-ops scan` | `codex:scan` | Entry point that reiterates the portal configuration reminders and invokes `scripts/codex/scan.mjs` whenever you choose to trigger a scan. |
 | `/career-ops pdf` | `codex:pdf` | Entry point that delegates to `generate-pdf.mjs`, so the existing CV/template-based PDF pipeline remains unchanged. `scripts/codex/pdf.mjs` simply forwards the call. |
 | `/career-ops tracker` | `codex:tracker` | Entry point that shows the tracker, encourages TSV additions, and reminds you to run `node merge-tracker.mjs` + `node dedup-tracker.mjs`. |
 

@@ -18,20 +18,20 @@ This repository is now Codex-first. Claude remains supported for reference, but 
 
 ## Codex onboarding flow
 
-Before triggering any workflow, Codex runs the onboarding guardrails:
+Before triggering any workflow, Codex surfaces the onboarding guardrails:
 
 1. **CV check:** If `cv.md` is missing, ask the user to paste their CV or share a LinkedIn/resume link; convert the response into markdown and save it as `cv.md`.
 2. **Profile check:** If `config/profile.yml` is missing, copy from the example and prompt the user for name, email, timezone, target roles, salary range, and personal narratives.
 3. **Portals check:** If `portals.yml` is absent, copy `templates/portals.example.yml` and optionally adjust `tracked_companies` or `title_filter.positive` to match the target roles outlined in the profile.
 
-Codex will not proceed with evaluations, scans, PDFs, or tracker updates until these files exist. This document outlines the flow for Codex users whenever onboarding stalls.
+These reminders explain what to set up before running evaluations, scans, PDFs, or tracker updates. This document outlines the flow for Codex users whenever onboarding stalls.
 
 ## Main Codex workflows
 
 | Command | Description | Implementation |
 |---------|-------------|----------------|
-| `codex:evaluate` | Entry point for the evaluation workflow: paste a JD/URL, the command validates onboarding, points Codex at `modes/_shared.md`/`modes/oferta.md`, and wraps `scripts/codex/evaluate.mjs` so an agent can follow the structured evaluation guidance. | `scripts/codex/evaluate.mjs`, `modes/_shared.md`, `modes/oferta.md` |
-| `codex:scan` | Entry point for the portal scanner: it confirms `portals.yml` is ready, reminds you of the manual scan steps, and invokes `scripts/codex/scan.mjs` as a wrapper when you request a scan. | `scripts/codex/scan.mjs`, `portals.yml` |
+| `codex:evaluate` | Entry point for the evaluation workflow: paste a JD/URL, the command highlights the onboarding checklist, references the `modes/_shared.md`/`modes/oferta.md` guidance, and wraps `scripts/codex/evaluate.mjs` so an agent can follow the structured evaluation steps when you request it. | `scripts/codex/evaluate.mjs`, `modes/_shared.md`, `modes/oferta.md` |
+| `codex:scan` | Entry point for the portal scanner: it surfaces the portal configuration reminders and invokes `scripts/codex/scan.mjs` as a wrapper whenever you choose to trigger a scan. | `scripts/codex/scan.mjs`, `portals.yml` |
 | `codex:pdf` | Entry point that delegates to `generate-pdf.mjs` so the existing CV/template ATS PDF path stays unchanged; `scripts/codex/pdf.mjs` just forwards the call. | `templates/cv-template.html`, `generate-pdf.mjs`, `scripts/codex/pdf.mjs` |
 | `codex:tracker` | Shows tracker status, advocates TSV additions, and reminds you to run `node merge-tracker.mjs` + `node dedup-tracker.mjs`. | `batch/tracker-additions/`, `scripts/codex/tracker.mjs`, `merge-tracker.mjs`, and `dedup-tracker.mjs` |
 
@@ -54,7 +54,7 @@ The Codex commands still reference the human-authored guidance in `modes/`:
 - `modes/oferta.md` spells out the six evaluation blocks that agents follow when performing `codex:evaluate`.
 - `scripts/codex/shared.mjs` supplies CLI helpers, repo-path utilities, and setup checks so the wrappers can execute consistently.
 
-Keeping these docs aligned with the modes is a maintenance expectation: update the WRG guidance when you revise the scripts so Codex and Claude stay in sync rather than relying on any implicit auto-linkage.
+Keeping these docs aligned with the modes is a maintenance expectation: update the workflow guidance when you revise the scripts so Codex and Claude stay in sync rather than relying on any implicit auto-linkage.
 
 ## Operational reminders
 
