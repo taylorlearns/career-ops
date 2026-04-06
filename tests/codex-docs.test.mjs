@@ -62,5 +62,13 @@ test('docs/codex-workflows.md calls out entry-point behavior and the shared mode
     content.includes('modes/_shared.md'),
     'codex-workflows.md should reference modes/_shared.md for archetype guidance.'
   );
+  assert(
+    content.includes('wraps `scripts/codex/evaluate.mjs`'),
+    'codex-workflows.md should say codex:evaluate wraps the evaluate script.'
+  );
+  assert(
+    content.includes('invokes `scripts/codex/scan.mjs`'),
+    'codex-workflows.md should say codex:scan invokes the scan script on request.'
+  );
 });
 });

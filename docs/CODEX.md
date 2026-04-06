@@ -30,8 +30,8 @@ Codex will not proceed with evaluations, scans, PDFs, or tracker updates until t
 
 | Command | Description | Implementation |
 |---------|-------------|----------------|
-| `codex:evaluate` | Entry point for the evaluation workflow: paste a JD/URL, the command runs `scripts/codex/evaluate.mjs`, which carries out the block-by-block evaluation, report, PDF, and TSV additions only when explicitly invoked. | `scripts/codex/evaluate.mjs`, `modes/_shared.md`, `modes/oferta.md` |
-| `codex:scan` | Entry point for the portal scanner: running the command triggers `scripts/codex/scan.mjs` with `portals.yml`, but scans run only when you request them. | `scripts/codex/scan.mjs`, `portals.yml` |
+| `codex:evaluate` | Entry point for the evaluation workflow: paste a JD/URL, the command validates onboarding, points Codex at `modes/_shared.md`/`modes/oferta.md`, and wraps `scripts/codex/evaluate.mjs` so an agent can follow the structured evaluation guidance. | `scripts/codex/evaluate.mjs`, `modes/_shared.md`, `modes/oferta.md` |
+| `codex:scan` | Entry point for the portal scanner: it confirms `portals.yml` is ready, reminds you of the manual scan steps, and invokes `scripts/codex/scan.mjs` as a wrapper when you request a scan. | `scripts/codex/scan.mjs`, `portals.yml` |
 | `codex:pdf` | Entry point that delegates to `generate-pdf.mjs` so the existing CV/template ATS PDF path stays unchanged; `scripts/codex/pdf.mjs` just forwards the call. | `templates/cv-template.html`, `generate-pdf.mjs`, `scripts/codex/pdf.mjs` |
 | `codex:tracker` | Shows tracker status, advocates TSV additions, and reminds you to run `node merge-tracker.mjs` + `node dedup-tracker.mjs`. | `batch/tracker-additions/`, `scripts/codex/tracker.mjs`, `merge-tracker.mjs`, and `dedup-tracker.mjs` |
 
