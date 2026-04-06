@@ -1,0 +1,35 @@
+# AGENTS — Codex First
+
+This repository is Codex-first. Claude compatibility still exists for reference, but the Codex workflows now drive installations, onboarding, and day-to-day operations. Codex commands are the primary touchpoints: `codex:evaluate`, `codex:scan`, `codex:pdf`, and `codex:tracker` are the workflows every session should default to.
+
+## Onboarding checks
+
+Before you do anything that produces evaluations, scans, PDFs, or tracker changes, verify the three onboarding sources of truth:
+
+1. `cv.md` exists in the project root (your canonical CV).
+2. `config/profile.yml` exists and is filled from `config/profile.example.yml`.
+3. `portals.yml` exists (you can copy from `templates/portals.example.yml`).
+
+If any of those files are missing, do *not* continue with evaluations or tracking. Ask the user to create or populate them, guide them through providing the data, and only proceed once the files exist in the repo. The onboarding flow for Codex users is documented in `docs/CODEX.md` and insists on those same three files.
+
+## Sources of truth & operational rules
+
+- `cv.md`, `article-digest.md`, and `config/profile.yml` are still the canonical data (see `modes/_shared.md` for how Codex uses them). Always read them before matching a job.
+- `portals.yml` (and any custom filters in `title_filter`) is the scanner’s configuration for `codex:scan`.
+- Tracker additions must go through `batch/tracker-additions/` and then `merge-tracker.mjs`. After merging, run `dedup-tracker.mjs` so the tracker stays clean. Never hand-edit `data/applications.md` to add a new row.
+- Treat Claude modes such as `modes/oferta.md` as reference implementations but do *not* duplicate their prompt logic; reuse the shared `modes/_shared.md` context and the `scripts/codex/*.mjs` scripts instead. That keeps Codex and Claude aligned on the same data.
+- Tracker merges and dedup runs are part of the pipeline: run `node merge-tracker.mjs`, then `node dedup-tracker.mjs` after any batch evaluation touches `batch/tracker-additions/`.
+- `templates/states.yml` is the final authority on tracker statuses.
+- Applications are never submitted automatically. Generate reports, PDFs, and tracker entries, then ask the user to review or submit. Respect the warning in `CLAUDE.md`: “quality, not quantity, and never auto-submit.”
+
+## Workflow guidance
+
+Codex commands are the automation surface. Each session roughly follows:
+
+1. Confirm onboarding (cv/profile/portals).
+2. Use `codex:evaluate` (maps to `/career-ops` auto pipeline) to process a pasted JD or URL.
+3. Run `codex:scan` for portal discovery (maps to `/career-ops scan`).
+4. When you need a tailored CV/ATS PDF, use `codex:pdf`.
+5. Check progress via `codex:tracker`. Updates still pass through the tracker scripts and the `batch/tracker-additions/` workflow.
+
+Follow RTK (`@RTK.md`) for shell commands: prefix scripts with `rtk` and use the `rtk gain` helpers when needed.
