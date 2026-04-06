@@ -1,0 +1,59 @@
+candidate:
+  full_name: "Taylor Peng (PengShuhua)"
+  email: "tylorpeng@outlook.com"
+  phone: "18742550912"
+  location: "Guangzhou, Guangdong, China"
+  linkedin: ""
+  portfolio_url: ""
+  github: "github.com/taylorlearns"
+  twitter: ""
+
+target_roles:
+  primary:
+    - "AI Product Manager"
+    - "Agent Developer"
+    - "Developer Relations Manager"
+    - "Open Source Community Operations"
+  archetypes:
+    - name: "AI Product Manager"
+      level: "Mid-Senior"
+      fit: "primary"
+    - name: "Agent / AI Application Developer"
+      level: "Mid"
+      fit: "primary"
+    - name: "Developer Relations / Developer Enablement"
+      level: "Mid-Senior"
+      fit: "secondary"
+    - name: "Open Source Community / Ecosystem Operations"
+      level: "Mid"
+      fit: "secondary"
+
+narrative:
+  headline: "Game technology support and developer enablement professional moving into AI product, agent development, and developer ecosystem roles"
+  exit_story: "Built cross-functional support, partner collaboration, knowledge systems, and early generative AI workflows inside game engine support. Now focused on AI product, agent development, developer relations, and open-source ecosystem roles."
+  superpowers:
+    - "Cross-functional technical coordination across internal teams and external partners"
+    - "Developer support workflow design, escalation handling, and knowledge base building"
+    - "Turning technical capabilities into usable guidance, demos, and partner-facing enablement"
+  proof_points:
+    - name: "Engine Support ITSM System"
+      url: ""
+      hero_metric: "Built an internal ITSM workflow from 0 to 1 for engine support intake and knowledge accumulation"
+    - name: "Hardware Partner Collaboration"
+      url: ""
+      hero_metric: "Served as the technical interface across internal studios and 20+ hardware partners"
+    - name: "Generative AI Enablement for Engine Support"
+      url: ""
+      hero_metric: "Defined use cases and product requirements for AI Q&A, AI search, and error-recognition workflows"
+
+compensation:
+  target_range: "CNY 22k-30k/month"
+  currency: "CNY"
+  minimum: "CNY 18k/month"
+  location_flexibility: "Remote OK; do not target Beijing-based companies"
+
+location:
+  country: "China"
+  city: "Guangzhou"
+  timezone: "Asia/Shanghai"
+  visa_status: "No sponsorship needed in China"

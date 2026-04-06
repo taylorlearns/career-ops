@@ -1,0 +1,127 @@
+# Portal Scanner Configuration
+# Customized for Taylor Peng's target roles.
+
+title_filter:
+  positive:
+    - "AI Product Manager"
+    - "Product Manager"
+    - "Technical Product Manager"
+    - "AI"
+    - "Agent"
+    - "Agentic"
+    - "LLM"
+    - "GenAI"
+    - "Generative AI"
+    - "AI Application"
+    - "Developer Relations"
+    - "Developer Advocate"
+    - "Developer Community"
+    - "Developer Enablement"
+    - "Open Source"
+    - "Community"
+    - "Community Manager"
+    - "Ecosystem"
+    - "Platform"
+    - "Technical Program"
+    - "Solutions"
+  negative:
+    - "Junior"
+    - "Intern"
+    - "iOS"
+    - "Android"
+    - "PHP"
+    - "Ruby"
+    - "Embedded"
+    - "Firmware"
+    - "FPGA"
+    - "ASIC"
+    - "Blockchain"
+    - "Web3"
+    - "Crypto"
+    - "Sales"
+    - "Account Executive"
+    - "Beijing"
+  seniority_boost:
+    - "Senior"
+    - "Lead"
+    - "Manager"
+    - "Principal"
+    - "Head"
+
+search_queries:
+  - name: Ashby - AI Product / Agent
+    query: 'site:jobs.ashbyhq.com "AI Product Manager" OR "Agent" OR "Agentic" OR "LLM" remote'
+    enabled: true
+
+  - name: Greenhouse - AI Product / Agent
+    query: 'site:boards.greenhouse.io OR site:job-boards.greenhouse.io "AI Product Manager" OR "Agent" OR "LLM" remote'
+    enabled: true
+
+  - name: Lever - AI Product / Agent
+    query: 'site:jobs.lever.co "AI Product Manager" OR "Agent" OR "Generative AI" remote'
+    enabled: true
+
+  - name: DevRel / Developer Community
+    query: '"Developer Relations" OR "Developer Advocate" OR "Developer Community" OR "Open Source" remote'
+    enabled: true
+
+  - name: Community / Ecosystem
+    query: '"Open Source" OR "Community Manager" OR "Ecosystem" AI OR developer remote'
+    enabled: true
+
+tracked_companies:
+  - name: Anthropic
+    careers_url: https://job-boards.greenhouse.io/anthropic
+    api: https://boards-api.greenhouse.io/v1/boards/anthropic/jobs
+    enabled: true
+
+  - name: OpenAI
+    careers_url: https://openai.com/careers
+    scan_method: websearch
+    scan_query: 'site:openai.com/careers "Product" OR "Developer" OR "Community" OR "AI"'
+    enabled: true
+
+  - name: LangChain
+    careers_url: https://jobs.ashbyhq.com/langchain
+    enabled: true
+
+  - name: Pinecone
+    careers_url: https://jobs.ashbyhq.com/pinecone
+    enabled: true
+
+  - name: Vercel
+    careers_url: https://job-boards.greenhouse.io/vercel
+    api: https://boards-api.greenhouse.io/v1/boards/vercel/jobs
+    enabled: true
+
+  - name: Retool
+    careers_url: https://retool.com/careers
+    scan_method: websearch
+    scan_query: 'site:retool.com/careers "Developer" OR "Product" OR "Community" OR "AI"'
+    enabled: true
+
+  - name: n8n
+    careers_url: https://jobs.ashbyhq.com/n8n
+    enabled: true
+
+  - name: Zapier
+    careers_url: https://jobs.ashbyhq.com/zapier
+    enabled: true
+
+  - name: Make.com
+    careers_url: https://www.make.com/en/careers
+    scan_method: websearch
+    scan_query: 'site:make.com/en/careers "Product" OR "Developer" OR "Community" OR "AI"'
+    enabled: true
+
+  - name: Hugging Face
+    careers_url: https://huggingface.co/join-us
+    scan_method: websearch
+    scan_query: 'site:huggingface.co/join-us "Developer Relations" OR "Open Source" OR "Community" OR "Product"'
+    enabled: true
+
+  - name: GitHub
+    careers_url: https://www.github.careers/careers-home
+    scan_method: websearch
+    scan_query: 'site:github.careers "Developer Relations" OR "Community" OR "Product" OR "Open Source"'
+    enabled: true
