@@ -44,7 +44,7 @@ Each command loads `scripts/codex/shared.mjs` for repo-path helpers, setup check
 - `portals.yml`: scanner configuration; keep `title_filter`, `tracked_companies`, and `search_queries` aligned with the profile.
 - `batch/tracker-additions/` + `merge-tracker.mjs`/`dedup-tracker.mjs`: tracker integrity. Do not edit `data/applications.md` directly for new entries.
 
-Codex reads these files on each run. When onboarding a new user or session, follow the steps above, then move to the commands table to run evaluations.
+Codex workflows expect these files to be populated before you run evaluations, scans, PDFs, or tracker updates. When onboarding a new user or session, follow the steps above, then move to the commands table to run evaluations.
 
 ## Implementation substrate
 

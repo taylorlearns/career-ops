@@ -1,6 +1,6 @@
 # AGENTS — Codex First
 
-This repository is Codex-first. Claude compatibility still exists for reference, but the Codex workflows now drive installations, onboarding, and day-to-day operations. Codex commands are the primary touchpoints: `codex:evaluate`, `codex:scan`, `codex:pdf`, and `codex:tracker` are the workflows every session should default to.
+This repository is Codex-first. Claude compatibility still exists for reference, but the Codex workflows now drive installations, onboarding, and day-to-day operations. `codex:evaluate`, `codex:scan`, `codex:pdf`, and `codex:tracker` serve as the entry-point commands that wrap the helper scripts, while the shared modes supply the policy context.
 
 ## Onboarding checks
 
@@ -10,7 +10,7 @@ Before you do anything that produces evaluations, scans, PDFs, or tracker change
 2. `config/profile.yml` exists and is filled from `config/profile.example.yml`.
 3. `portals.yml` exists (you can copy from `templates/portals.example.yml`).
 
-If any of those files are missing, do *not* continue with evaluations or tracking. Ask the user to create or populate them, guide them through providing the data, and only proceed once the files exist in the repo. The onboarding flow for Codex users is documented in `docs/CODEX.md` and insists on those same three files.
+If any of those files are missing, pause before generating evaluations or tracker updates. Prompt the user to create or populate the missing files, guide them through providing the data, and proceed only after the repo contains each onboarding artifact. The onboarding flow for Codex users is documented in `docs/CODEX.md` and reiterates these checks.
 
 ## Sources of truth & operational rules
 
@@ -24,10 +24,10 @@ If any of those files are missing, do *not* continue with evaluations or trackin
 
 ## Workflow guidance
 
-Codex commands are the automation surface. Each session roughly follows:
+Codex commands are entry points that remind you of onboarding before delegating to the helper scripts. Each session roughly follows:
 
 1. Confirm onboarding (cv/profile/portals).
-2. Use `codex:evaluate` (maps to `/career-ops` auto pipeline) to process a pasted JD or URL.
-3. Run `codex:scan` for portal discovery (maps to `/career-ops scan`).
+2. Use `codex:evaluate` (maps to `/career-ops` auto pipeline) to process a pasted JD or URL while following the shared guidance.
+3. Run `codex:scan` for portal discovery (maps to `/career-ops scan`) when you are ready for a manual scan.
 4. When you need a tailored CV/ATS PDF, use `codex:pdf`.
 5. Check progress via `codex:tracker`. Updates still pass through the tracker scripts and the `batch/tracker-additions/` workflow.
