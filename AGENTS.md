@@ -1,4 +1,4 @@
-# AGENTS — Codex First
+# AGENTS - Codex First
 
 This repository is Codex-first. Claude compatibility still exists for reference, but the Codex workflows now drive installations, onboarding, and day-to-day operations. `codex:evaluate`, `codex:scan`, `codex:pdf`, and `codex:tracker` serve as the entry-point commands that wrap the helper scripts, while the shared modes supply the policy context.
 
@@ -14,8 +14,8 @@ If any of those files are missing, pause before generating evaluations or tracke
 
 ## Sources of truth & operational rules
 
-- `cv.md` and `config/profile.yml` remain the canonical data sources (see `modes/_shared.md` for how Codex uses them). Always read them before matching a job, and treat `article-digest.md` as optional supplemental proof points when it exists.
-- `portals.yml` (and any custom filters in `title_filter`) is the scanner’s configuration for `codex:scan`.
+- `cv.md` and `config/profile.yml` remain the canonical data sources (see `modes/_shared.md` for reference). Always read them before matching a job, and treat `article-digest.md` as optional supplemental proof points when it exists.
+- `portals.yml` (and any custom filters in `title_filter`) is the scanner's configuration for `codex:scan`.
 - Tracker additions must go through `batch/tracker-additions/` and then `merge-tracker.mjs`. After merging, run `dedup-tracker.mjs` so the tracker stays clean. Never hand-edit `data/applications.md` to add a new row.
 - Treat Claude modes such as `modes/oferta.md` as reference implementations but do *not* duplicate their prompt logic; reuse the shared `modes/_shared.md` context and the `scripts/codex/*.mjs` scripts instead. That keeps Codex and Claude aligned on the same data.
 - Tracker merges and dedup runs are part of the pipeline: run `node merge-tracker.mjs`, then `node dedup-tracker.mjs` after any batch evaluation touches `batch/tracker-additions/`.
