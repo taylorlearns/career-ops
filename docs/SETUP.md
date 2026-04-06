@@ -2,9 +2,10 @@
 
 ## Prerequisites
 
-- [Claude Code](https://claude.ai/code) installed and configured
+- Codex installed and configured (primary entry point)
 - Node.js 18+ (for PDF generation and utility scripts)
 - (Optional) Go 1.21+ (for the dashboard TUI)
+- (Optional) [Claude Code](https://claude.ai/code) installed and configured (reference flow)
 
 ## Quick Start (5 steps)
 
@@ -17,52 +18,46 @@ npm install
 npx playwright install chromium   # Required for PDF generation
 ```
 
-### 2. Configure your profile
+### 2. Onboarding files
 
 ```bash
 cp config/profile.example.yml config/profile.yml
+cp templates/portals.example.yml portals.yml
 ```
-
-Edit `config/profile.yml` with your personal details: name, email, target roles, narrative, proof points.
-
-### 3. Add your CV
 
 Create `cv.md` in the project root with your full CV in markdown format. This is the source of truth for all evaluations and PDFs.
 
 (Optional) Create `article-digest.md` with proof points from your portfolio projects/articles.
 
-### 4. Configure portals
+### 3. Open in Codex
+
+Open the repo in Codex and start with `AGENTS.md` for the Codex-first instructions.
+
+### 4. Run Codex entry points
 
 ```bash
-cp templates/portals.example.yml portals.yml
+npm run codex:evaluate -- --job <url-or-file>
+npm run codex:scan
+npm run codex:pdf -- <args>
+npm run codex:tracker -- verify
 ```
 
-Edit `portals.yml`:
-- Update `title_filter.positive` with keywords matching your target roles
-- Add companies you want to track in `tracked_companies`
-- Customize `search_queries` for your preferred job boards
+`codex:evaluate` and `codex:scan` are entry points that wrap the `scripts/codex/*.mjs` helpers. `codex:pdf` forwards to `generate-pdf.mjs` through the wrapper, and `codex:tracker` focuses on status and the merge/dedup reminders. They do not auto-submit applications.
 
-### 5. Start using
+### 5. Claude (secondary)
 
-Open Claude Code in this directory:
-
-```bash
-claude
-```
-
-Then paste a job offer URL or description. Career-ops will automatically evaluate it, generate a report, create a tailored PDF, and track it.
+If you prefer Claude Code for reference, open it and use the `/career-ops` commands. Codex remains the default flow.
 
 ## Available Commands
 
 | Action | How |
 |--------|-----|
-| Evaluate an offer | Paste a URL or JD text |
-| Search for offers | `/career-ops scan` |
-| Process pending URLs | `/career-ops pipeline` |
-| Generate a PDF | `/career-ops pdf` |
-| Batch evaluate | `/career-ops batch` |
-| Check tracker status | `/career-ops tracker` |
-| Fill application form | `/career-ops apply` |
+| Evaluate an offer | `npm run codex:evaluate -- --job <url-or-file>` |
+| Search for offers | `npm run codex:scan` |
+| Generate a PDF | `npm run codex:pdf -- <args>` |
+| Check tracker status | `npm run codex:tracker -- verify` |
+
+Claude Code remains supported for reference, but the Codex entry points are the default.
 
 ## Verify Setup
 
