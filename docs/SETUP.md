@@ -42,7 +42,7 @@ npm run codex:pdf -- <args>
 npm run codex:tracker -- verify
 ```
 
-These commands are entry points that wrap the existing helper scripts. They do not auto-submit applications.
+`codex:evaluate` and `codex:scan` are entry points that wrap the `scripts/codex/*.mjs` helpers. `codex:pdf` forwards to `generate-pdf.mjs` through the wrapper, and `codex:tracker` focuses on status and the merge/dedup reminders. They do not auto-submit applications.
 
 ### 5. Claude (secondary)
 
