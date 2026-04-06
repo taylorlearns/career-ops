@@ -30,12 +30,12 @@ Codex will not proceed with evaluations, scans, PDFs, or tracker updates until t
 
 | Command | Description | Implementation |
 |---------|-------------|----------------|
-| `codex:evaluate` | Auto-pipeline for a pasted JD/URL. Generates blocks A-F, a report, a PDF, and writes TSVs for the tracker. | `scripts/codex/evaluate.mjs` + `modes/oferta.md` + `modes/_shared.md` |
-| `codex:scan` | Portal scanner that reuses `portals.yml` + `scripts/codex/scan.mjs` to discover new jobs. | `scripts/codex/scan.mjs` + shared context |
-| `codex:pdf` | Generates ATS-optimized PDF using the HTML template and `scripts/codex/pdf.mjs`. | `templates/cv-template.html`, `generate-pdf.mjs`, `scripts/codex/pdf.mjs` |
-| `codex:tracker` | Shows tracker status and helps sync TSV additions via `merge-tracker.mjs` + `dedup-tracker.mjs`. | `batch/tracker-additions/`, `scripts/codex/tracker.mjs`, `merge-tracker.mjs`, and `dedup-tracker.mjs` |
+| `codex:evaluate` | Entry point for the evaluation workflow: paste a JD/URL, the command runs `scripts/codex/evaluate.mjs`, which carries out the block-by-block evaluation, report, PDF, and TSV additions only when explicitly invoked. | `scripts/codex/evaluate.mjs`, `modes/_shared.md`, `modes/oferta.md` |
+| `codex:scan` | Entry point for the portal scanner: running the command triggers `scripts/codex/scan.mjs` with `portals.yml`, but scans run only when you request them. | `scripts/codex/scan.mjs`, `portals.yml` |
+| `codex:pdf` | Entry point that delegates to `generate-pdf.mjs` so the existing CV/template ATS PDF path stays unchanged; `scripts/codex/pdf.mjs` just forwards the call. | `templates/cv-template.html`, `generate-pdf.mjs`, `scripts/codex/pdf.mjs` |
+| `codex:tracker` | Shows tracker status, advocates TSV additions, and reminds you to run `node merge-tracker.mjs` + `node dedup-tracker.mjs`. | `batch/tracker-additions/`, `scripts/codex/tracker.mjs`, `merge-tracker.mjs`, and `dedup-tracker.mjs` |
 
-Each command references the shared context in `scripts/codex/shared.mjs`, which mirrors the `modes/_shared.md` guidance for archetypes, comp intelligence, and tracker rules. Reuse those files rather than copying prompt logic elsewhere.
+Each command loads `scripts/codex/shared.mjs` for repo-path helpers, setup checks, and script execution; the actual guidance for archetypes, comp intelligence, and tracker rules still comes from `modes/_shared.md` and the other mode docs. Reuse those sources instead of rewriting the prompt logic elsewhere.
 
 ## Codex onboarding checklist
 

@@ -47,8 +47,20 @@ test('docs/codex-workflows.md maps /career-ops to codex:evaluate and codex:scan'
   );
   ['codex:evaluate', 'codex:scan'].forEach((plan) => {
     assert(
-      content.includes(plan),
-      `codex-workflows.md should describe ${plan} as a replacement flow.`
-    );
-  });
+    content.includes(plan),
+    `codex-workflows.md should describe ${plan} as a replacement flow.`
+  );
+});
+
+test('docs/codex-workflows.md calls out entry-point behavior and the shared modes', () => {
+  const content = read('docs/codex-workflows.md');
+  assert(
+    content.includes('Entry point'),
+    'codex-workflows.md should describe Codex commands as entry points.'
+  );
+  assert(
+    content.includes('modes/_shared.md'),
+    'codex-workflows.md should reference modes/_shared.md for archetype guidance.'
+  );
+});
 });
