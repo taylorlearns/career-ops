@@ -1,6 +1,6 @@
 # Codex Setup & Onboarding
 
-This repository is now Codex-first. Claude remains supported for reference, but the Codex workflows are the primary onboarding, evaluation, and scanning surface. The Codex commands run the same shared `modes/*.md` context and the `scripts/codex/*.mjs` implementation instead of duplicating prompt logic.
+This repository is now Codex-first. Claude remains supported for reference, but the Codex workflows are the primary onboarding, evaluation, and scanning surface. The Codex commands act as entry points: they invoke the `scripts/codex/*.mjs` helpers while consulting the shared `modes/*.md` documents for guidance instead of duplicating prompt logic.
 
 ## Prerequisites
 
