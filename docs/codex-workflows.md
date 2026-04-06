@@ -26,4 +26,4 @@ This document clarifies how the old `/career-ops` commands translate into the ne
 4. **Generate a CV/PDF:** Use `codex:pdf` so the ATS output stays consistent.
 5. **Review status:** Use `codex:tracker` to confirm TSV merges, dedup runs, and the latest application statuses.
 
-Codex commands respect the “do not submit automatically” rule from `CLAUDE.md`; generate content, show it to the user, and only proceed with their approval. AGENTS.md documents the same guidance for easy reference.
+Codex commands follow the CLAUDE.md emphasis on quality over quantity and the need for manual approval before submitting anything; generate content, show it to the user, and wait for their go-ahead. AGENTS.md documents the same guidance for easy reference.
