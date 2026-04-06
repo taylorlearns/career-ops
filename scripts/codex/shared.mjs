@@ -22,24 +22,19 @@ export function fileExists(relativePath) {
 export function getSetupStatus() {
   return [
     {
-      label: "AGENTS instructions",
-      ready: fileExists("AGENTS.md"),
-      detail: "Add AGENTS.md to document workflow expectations.",
+      label: "cv.md",
+      ready: fileExists("cv.md"),
+      detail: "Keep the CV current before progressing.",
     },
     {
-      label: "Node dependencies",
-      ready: fileExists("node_modules"),
-      detail: "Run `npm install` to install modules.",
+      label: "config/profile.yml",
+      ready: fileExists("config/profile.yml"),
+      detail: "Ensure onboarding profile settings exist.",
     },
     {
-      label: "Modes docs",
-      ready: fileExists("modes"),
-      detail: "Review the `modes` docs for workflow guidance.",
-    },
-    {
-      label: "Lockfile",
-      ready: fileExists("package-lock.json"),
-      detail: "Keep `package-lock.json` in sync with installs.",
+      label: "portals.yml",
+      ready: fileExists("portals.yml"),
+      detail: "Define portal specs to orient workflow tools.",
     },
   ];
 }
