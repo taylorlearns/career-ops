@@ -48,13 +48,13 @@ Codex reads these files on each run. When onboarding a new user or session, foll
 
 ## Implementation substrate
 
-Codex keeps the original `modes/` definitions as the source of truth:
+The Codex commands still reference the human-authored guidance in `modes/`:
 
-- `modes/_shared.md` contains the archetype definitions, sources of truth, and global rules that both Claude and Codex consume.
-- `modes/oferta.md` spells out the six evaluation blocks referenced by `codex:evaluate`.
-- `scripts/codex/shared.mjs` loads the same context and shares utilities across the codex workflows.
+- `modes/_shared.md` contains the archetype definitions, data sources, and global rules that guide the workflows.
+- `modes/oferta.md` spells out the six evaluation blocks that agents follow when performing `codex:evaluate`.
+- `scripts/codex/shared.mjs` supplies CLI helpers, repo-path utilities, and setup checks so the wrappers can execute consistently.
 
-This means any update to the modes automatically updates the Codex behavior. When explaining Codex flows to a newcomer, point them to `CLAUDE.md` for deeper policy context but keep all execution inside the Codex commands.
+Keeping these docs aligned with the modes is a maintenance expectation: update the WRG guidance when you revise the scripts so Codex and Claude stay in sync rather than relying on any implicit auto-linkage.
 
 ## Operational reminders
 

@@ -71,4 +71,16 @@ test('docs/codex-workflows.md calls out entry-point behavior and the shared mode
     'codex-workflows.md should say codex:scan invokes the scan script on request.'
   );
 });
+
+test('docs/CODEX.md accurately reflects the helper relationship', () => {
+  const content = read('docs/CODEX.md');
+  assert(
+    content.includes('CLI helpers'),
+    'docs/CODEX.md should mention scripts/codex/shared.mjs provides CLI helpers.'
+  );
+  assert(
+    !content.includes('loads the same context'),
+    'docs/CODEX.md should not claim scripts/codex/shared.mjs loads the modes context.'
+  );
+});
 });
